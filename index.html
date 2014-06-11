@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>We Want to Know What You Think!</title>
+    <script>
+        function isEmail(elm) {
+            if (elm.value.indexOf("@") != "-1" && 
+                elm.value.indexOf(".") != "-1"){
+                return true:
+            }
+            else {
+                return false;
+            }
+        }
+
+        function isFilled(elm) {
+            if (elm.value == "" || elm.value ==null) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function isReady(form) {
+            if (isEmail(form.address) == false) {
+                alert("Please enter a valid email address.");
+                form.address.focus();
+                return false;
+            }
+
+            if (isFilled(form.fullname) == false) {
+                alert("Please enter your name.");
+                form.fullname.focus();
+                return false;
+            }
+
+            if (isFilled(form.opinion) == false) {
+                alert("Please enter your opinion.");
+                form.opinion.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <style>
+        h1 {text-align: center;}
+        h2 {text-align: center;}
+        form {text-align: center;}
+    </style>
+</head>
+<body>
+    <br />
+    <h1>Please, send us feedback! </h1>
+    <h2>We'd love to hear from you!</h2>
+    <form name="mailForm" action="/cgi-bin/mailform.cgi" method="post" onSubmit="return isReady(this);">
+        <p>Your name:
+            <br />
+            <br />
+            <input name="fulname" type="text">
+        </p>
+        <p>Your email: 
+            <br />
+            <br />
+            <input name="fullname" type="text">
+        </p>
+        <p>Your opinion:</p>
+        <p><textarea name="opinion" rows="6" cols="50"  
+            wrap="wrap"></textarea></p>
+        <p><input type="submit" value="Send">
+            <input type="reset" value="Trash"></p>
+    </form>
+</body>
+</html>
